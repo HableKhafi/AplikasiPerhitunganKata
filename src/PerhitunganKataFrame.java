@@ -1,3 +1,12 @@
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.io.*;                      // Untuk File, PrintWriter, IOException (penyimpanan file)
+import java.util.regex.*;              // Untuk pencarian kata menggunakan regex (Pattern, Matcher)
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,8 +23,32 @@ public class PerhitunganKataFrame extends javax.swing.JFrame {
      */
     public PerhitunganKataFrame() {
         initComponents();
+        
+        this.setSize(487, 543); // atur ukuran default jendela
+        this.setLocationRelativeTo(null); // tampil di tengah layar
+        
+//        txtInput.getDocument().addDocumentListener(new DocumentListener() {
+//        public void insertUpdate(DocumentEvent e) { hitung(); }
+//        public void removeUpdate(DocumentEvent e) { hitung(); }
+//        public void changedUpdate(DocumentEvent e) { hitung(); }
+//    });
     }
 
+    private void hitung() {
+    String text = txtInput.getText().trim();
+    int karakter = text.length();
+    String[] words = text.split("\\s+");
+    int kata = (text.isEmpty()) ? 0 : words.length;
+    String[] sentences = text.split("[.!?]+");
+    int kalimat = (text.isEmpty()) ? 0 : sentences.length;
+    String[] paragraphs = text.split("\\n+");
+    int paragraf = (text.isEmpty()) ? 0 : paragraphs.length;
+
+    lblKata.setText("Kata: " + kata);
+    lblKarakter.setText("Karakter: " + karakter);
+    lblKalimat.setText("Kalimat: " + kalimat);
+    lblParagraf.setText("Paragraf: " + paragraf);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,7 +99,6 @@ public class PerhitunganKataFrame extends javax.swing.JFrame {
         lblParagraf.setText("Paragraf :");
 
         txtCari.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
-        txtCari.setForeground(new java.awt.Color(255, 255, 255));
 
         lblCari.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         lblCari.setForeground(new java.awt.Color(255, 255, 255));
@@ -76,21 +108,41 @@ public class PerhitunganKataFrame extends javax.swing.JFrame {
         btnCari.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         btnCari.setForeground(new java.awt.Color(255, 255, 255));
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
         btnHitung.setBackground(new java.awt.Color(49, 49, 49));
         btnHitung.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         btnHitung.setForeground(new java.awt.Color(255, 255, 255));
         btnHitung.setText("Hitung");
+        btnHitung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHitungActionPerformed(evt);
+            }
+        });
 
         btnSimpan.setBackground(new java.awt.Color(49, 49, 49));
         btnSimpan.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnKeluar.setBackground(new java.awt.Color(49, 49, 49));
         btnKeluar.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         btnKeluar.setForeground(new java.awt.Color(255, 255, 255));
         btnKeluar.setText("Keluar");
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeluarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,6 +206,77 @@ public class PerhitunganKataFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungActionPerformed
+       hitung();
+    }//GEN-LAST:event_btnHitungActionPerformed
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+       String text = txtInput.getText().toLowerCase();
+        String keyword = txtCari.getText().toLowerCase();
+
+        if (keyword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Masukkan kata yang ingin dicari!");
+            return;
+        }
+
+        int count = 0;
+        Pattern p = Pattern.compile("\\b" + Pattern.quote(keyword) + "\\b");
+        Matcher m = p.matcher(text);
+
+        while (m.find()) {
+        count++;
+        }
+
+        JOptionPane.showMessageDialog(this, 
+            "Kata \"" + keyword + "\" ditemukan sebanyak " + count + " kali.");
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // Membuka dialog untuk memilih lokasi penyimpanan
+    JFileChooser chooser = new JFileChooser();
+    chooser.setDialogTitle("Simpan hasil ke file teks");
+    
+    // Filter agar hanya file .txt yang muncul
+    chooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Text Files (*.txt)", "txt"));
+    
+    int result = chooser.showSaveDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File file = chooser.getSelectedFile();
+
+        // Pastikan nama file berakhiran .txt
+        if (!file.getName().toLowerCase().endsWith(".txt")) {
+            file = new File(file.getAbsolutePath() + ".txt");
+        }
+
+        try (PrintWriter pw = new PrintWriter(new FileWriter(file))) {
+            pw.println("=== APLIKASI PENGHITUNG KATA ===");
+            pw.println();
+            pw.println("Isi Teks:");
+            pw.println(txtInput.getText());
+            pw.println();
+            pw.println("=== HASIL PERHITUNGAN ===");
+            pw.println(lblKata.getText());
+            pw.println(lblKarakter.getText());
+            pw.println(lblKalimat.getText());
+            pw.println(lblParagraf.getText());
+            pw.println();
+            pw.println("Disimpan pada: " + java.time.LocalDateTime.now());
+            
+            JOptionPane.showMessageDialog(this, 
+                "File berhasil disimpan sebagai:\n" + file.getAbsolutePath(),
+                "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, 
+                "Terjadi kesalahan saat menyimpan file:\n" + ex.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
+      System.exit(0);
+    }//GEN-LAST:event_btnKeluarActionPerformed
 
     /**
      * @param args the command line arguments
