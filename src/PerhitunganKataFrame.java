@@ -25,18 +25,132 @@ public class PerhitunganKataFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtInput = new javax.swing.JTextArea();
+        lblKata = new javax.swing.JLabel();
+        lblKarakter = new javax.swing.JLabel();
+        lblKalimat = new javax.swing.JLabel();
+        lblParagraf = new javax.swing.JLabel();
+        txtCari = new javax.swing.JTextField();
+        lblCari = new javax.swing.JLabel();
+        btnCari = new javax.swing.JButton();
+        btnHitung = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(49, 49, 49));
+        jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEmptyBorder(10, 15, 10, 15), javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), "Aplikasi Perhitungan Kata", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poppins SemiBold", 0, 12), new java.awt.Color(255, 255, 255)))); // NOI18N
+
+        txtInput.setColumns(20);
+        txtInput.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        txtInput.setRows(5);
+        jScrollPane1.setViewportView(txtInput);
+
+        lblKata.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        lblKata.setForeground(new java.awt.Color(255, 255, 255));
+        lblKata.setText("Kata : ");
+
+        lblKarakter.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        lblKarakter.setForeground(new java.awt.Color(255, 255, 255));
+        lblKarakter.setText("Karakter : ");
+
+        lblKalimat.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        lblKalimat.setForeground(new java.awt.Color(255, 255, 255));
+        lblKalimat.setText("Kalimat : ");
+
+        lblParagraf.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        lblParagraf.setForeground(new java.awt.Color(255, 255, 255));
+        lblParagraf.setText("Paragraf :");
+
+        txtCari.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        txtCari.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblCari.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        lblCari.setForeground(new java.awt.Color(255, 255, 255));
+        lblCari.setText("Cari Kata : ");
+
+        btnCari.setBackground(new java.awt.Color(49, 49, 49));
+        btnCari.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        btnCari.setForeground(new java.awt.Color(255, 255, 255));
+        btnCari.setText("Cari");
+
+        btnHitung.setBackground(new java.awt.Color(49, 49, 49));
+        btnHitung.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        btnHitung.setForeground(new java.awt.Color(255, 255, 255));
+        btnHitung.setText("Hitung");
+
+        btnSimpan.setBackground(new java.awt.Color(49, 49, 49));
+        btnSimpan.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        btnSimpan.setText("Simpan");
+
+        btnKeluar.setBackground(new java.awt.Color(49, 49, 49));
+        btnKeluar.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
+        btnKeluar.setForeground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setText("Keluar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(txtCari, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblKata, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblParagraf, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(lblKarakter, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(lblKalimat, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnHitung)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSimpan))
+                            .addComponent(btnCari)
+                            .addComponent(lblCari, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 101, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnKeluar)))
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKata)
+                    .addComponent(lblKarakter)
+                    .addComponent(lblKalimat))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblParagraf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHitung)
+                    .addComponent(btnSimpan))
+                .addGap(18, 18, 18)
+                .addComponent(lblCari)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCari)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(btnKeluar)
+                .addContainerGap())
         );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -77,5 +191,18 @@ public class PerhitunganKataFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnHitung;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblCari;
+    private javax.swing.JLabel lblKalimat;
+    private javax.swing.JLabel lblKarakter;
+    private javax.swing.JLabel lblKata;
+    private javax.swing.JLabel lblParagraf;
+    private javax.swing.JTextField txtCari;
+    private javax.swing.JTextArea txtInput;
     // End of variables declaration//GEN-END:variables
 }
